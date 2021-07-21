@@ -1,13 +1,18 @@
 import { ProxyState } from "../AppState.js";
 import { pokeApiService } from "../Services/PokeApiService.js";
 
-
+function _drawAll() {
+  const pokemon = ProxyState.allApiPokemon
+  let template = ''
+  pokemon.forEach(p => template += `<li class="action" onclick="app.pokeApiController.get`)
+}
 
 
 export default class PokeApiController {
   constructor() {
-    // ProxyState.on("values", _draw);
-    
+    ProxyState.on("allApiPokemon", _drawAll);
+
+  this.getAllPokemon()    
   }
   async getAllPokemon() {
     try {
