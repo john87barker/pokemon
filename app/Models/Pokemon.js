@@ -1,12 +1,16 @@
 import { ProxyState} from "../AppState.js"
 
 export default class Pokemon {
-    constructor({name, img, types, user, id}) {
+    constructor({name, img, types,  id, user, abilities, height, weight}) {
         this.name = name
         this.img = img || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
-        this.types = types
+        this.types = types.type 
+        this.id = id
         this.user = user
-        this.id = id 
+        this.abilities = abilities.ability
+        this.height = height
+        this.weight = weight
+        
         
     }
 
@@ -17,7 +21,10 @@ export default class Pokemon {
             <div class="card-body">
                 <h3 class="card-title uppercase">${this.name}</h3>
                 <p>Pokemon Type: ${this.types} </p>
-                
+                <p>Pokemon Abilities: ${this.abilities} </p>
+                <p>Pokemon ID: # ${this.id} </p>
+                <p>Pokemon Height: ${this.height} units</p>
+                <p>Pokemon Weight: ${this.weight} lbs </p>
             </div>
             <div class="text-right">
                 ${this.Button}

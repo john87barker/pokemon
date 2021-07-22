@@ -29,7 +29,7 @@ export default class PokeApiController {
     try {
       await pokeApiService.getAllPokemon();      
     } catch (error) {
-      console.error('controller poke api issue')
+      console.error('controller poke api issue', error)
     }
   }
   async getPokemon(id) {
