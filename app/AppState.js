@@ -7,6 +7,11 @@ class AppState extends EventEmitter {
   MyPokemon = []
    /** @type {Pokemon[]} */
   allApiPokemon = []
+ 
+  /**
+   * @type {{ name: any; }}
+   */
+  activePokemon = null
 }
 
 export const ProxyState = new Proxy(new AppState(), {

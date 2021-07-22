@@ -14,6 +14,20 @@ body {
 main {
   flex-grow: 1;
 }
+.side-bar-scroll {
+  max-height: 80vh;
+  overflow-y: auto;
+}
 
-
-
+.box {
+  max-height: 40vh;
+}
+.big-box {
+  max-height: 40em;
+}
+.action {
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(136, 132, 204);
+  }
+}
