@@ -4,14 +4,22 @@ export default class Pokemon {
     constructor({name, img, types,  id, user, abilities, height, weight}) {
         this.name = name
         this.img = img || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
-        this.types = types.type 
+        this.types = types
+        // [0].type.name
         this.id = id
         this.user = user
-        this.abilities = abilities.ability
+        this.abilities = abilities
+        // [0].ability.name
         this.height = height
         this.weight = weight
         
-        
+        if (typeof this.types[0] != 'string') {
+            this.types = this.types.map(elem => elem.type.name)
+        }
+        if (typeof this.abilities[0] != 'string') {
+            this.abilities = this.abilities.map(elem => elem.ability.name)
+        }
+       
     }
 
     get Template() {
@@ -35,8 +43,9 @@ export default class Pokemon {
     get Button() {
         const exists = ProxyState.MyPokemon.find(p => p.name === ProxyState.activePokemon.name)
         if (this.id) {
+            // NOTE fix button call
             return `
-            <button type="button" class="btn btn-success" ${exists ? 'disabled' : ''} onclick="app.myPokemonController.addPokemon()">Catch Pokemon</botton>`
+            <button type="button" class="btn btn-success" ${exists ? 'disabled' : ''} onclick="app.myPokemonController.catchPokemon()">Catch Pokemon</botton>`
         } return
         `<button type="button" class="btn btn-danger" onclick="app.myPokemonController.removePokemon()">Free Pokemon</button>`
 }

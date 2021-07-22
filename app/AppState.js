@@ -9,7 +9,7 @@ class AppState extends EventEmitter {
   allApiPokemon = []
  
   /**
-   * @type {{ name: any; }}
+   * @type {Pokemon}
    */
   activePokemon = null
 }
